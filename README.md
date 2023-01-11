@@ -16,4 +16,4 @@ If you want just run the bot (ex. on local machine) you can do it
 ```
 after this just configure `config` file and run bot again!
 
-![Discord Banner 2](https://discordapp.com/api/guilds/1062062559462699069/widget.png?style=banner3)
+![Discord Server Banner](https://discordapp.com/api/guilds/1062062559462699069/widget.png?style=banner3)
