@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "dev.cha0s_f4me"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
 	mavenCentral()
