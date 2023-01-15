@@ -21,6 +21,8 @@ dependencies {
 
 	implementation("io.github.config4k:config4k:0.5.0")
 	implementation("com.squareup.okio:okio:3.3.0")
+
+	implementation("org.slf4j:slf4j-log4j12:2.0.5")
 }
 
 tasks.withType<KotlinCompile> {
