@@ -74,7 +74,7 @@ class RoleTakingExtension : Extension() {
 
 		components {
 			Config.current.roles.forEach { roleInfo ->
-				val role = message.getGuild().getRoleOrNull(Snowflake(roleInfo.roleId)) ?: return@forEach
+				val role = message.getGuild().getRoleOrNull(Snowflake(roleInfo.id)) ?: return@forEach
 
 				ephemeralButton {
 					label = roleInfo.name
