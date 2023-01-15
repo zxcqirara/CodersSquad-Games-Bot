@@ -1,7 +1,6 @@
 package extensions
 
 import Config
-import com.kotlindiscord.kord.extensions.checks.hasPermission
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSubCommand
 import com.kotlindiscord.kord.extensions.commands.converters.impl.channel
@@ -14,7 +13,6 @@ import com.kotlindiscord.kord.extensions.types.respond
 import com.kotlindiscord.kord.extensions.utils.hasRole
 import dev.kord.common.entity.ButtonStyle
 import dev.kord.common.entity.ChannelType
-import dev.kord.common.entity.Permission
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.asChannelOf
 import dev.kord.core.behavior.edit
@@ -31,8 +29,7 @@ class RoleTakingExtension : Extension() {
 		ephemeralSlashCommand {
 			name = "roles"
 			description = "Управление ролями"
-
-			check { hasPermission(Permission.Administrator) }
+			allowByDefault = false
 
 			ephemeralSubCommand(::RolesPostArguments) {
 				name = "post"
