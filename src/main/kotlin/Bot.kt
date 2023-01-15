@@ -6,6 +6,7 @@ import dev.kord.core.event.gateway.ReadyEvent
 import dev.kord.core.kordLogger
 import extensions.ExtensionsExtension
 import extensions.PrivateRoomsExtension
+import extensions.ReloadExtension
 import extensions.RoleTakingExtension
 import io.github.config4k.toConfig
 import okio.FileSystem
@@ -45,6 +46,7 @@ suspend fun main() {
 			add(::RoleTakingExtension)
 			add(::ExtensionsExtension)
 			add(::PrivateRoomsExtension)
+			add(::ReloadExtension)
 		}
 	}
 
