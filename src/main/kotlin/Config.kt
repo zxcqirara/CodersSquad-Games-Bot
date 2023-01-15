@@ -12,7 +12,7 @@ object Config {
 		current = config.extract("discord")
 	}
 
-	val disabledExtensionsFile = File("disabled.txt")
+	private val disabledExtensionsFile = File("disabled.txt")
 	val disabledExtensions = mutableSetOf<String>()
 
 	fun loadDisabledExtensions() {
