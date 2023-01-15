@@ -47,7 +47,7 @@ class ExtensionsExtension : Extension() {
 					Config.disabledExtensions -= arguments.name
 					Config.dumpDisabledExtensions()
 
-					respond { content = "Расширение подключено" }
+					respond { content = "Расширение ${arguments.name} подключено" }
 				}
 			}
 
@@ -61,7 +61,7 @@ class ExtensionsExtension : Extension() {
 					Config.disabledExtensions += arguments.name
 					Config.dumpDisabledExtensions()
 
-					respond { content = "Расширение отключено" }
+					respond { content = "Расширение ${arguments.name} отключено" }
 				}
 			}
 		}
