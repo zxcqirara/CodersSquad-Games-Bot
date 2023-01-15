@@ -3,6 +3,8 @@ import com.kotlindiscord.kord.extensions.ExtensibleBot
 import com.typesafe.config.ConfigRenderOptions
 import config.DiscordConfig
 import dev.kord.core.event.gateway.ReadyEvent
+import dev.kord.core.kordLogger
+import extensions.ExtensionsExtension
 import extensions.RoleTakingExtension
 import io.github.config4k.toConfig
 import okio.FileSystem
@@ -40,7 +42,13 @@ suspend fun main() {
 
 		extensions {
 			add(::RoleTakingExtension)
+			add(::ExtensionsExtension)
 		}
+	}
+
+	Config.loadDisabledExtensions()
+	Config.disabledExtensions.forEach { extensionName ->
+		bot.unloadExtension(extensionName)
 	}
 
 	bot.on<ReadyEvent> {

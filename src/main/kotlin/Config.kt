@@ -11,4 +11,25 @@ object Config {
 		val config = ConfigFactory.parseFile(File(path))
 		current = config.extract("discord")
 	}
+
+	val disabledExtensionsFile = File("disabled.txt")
+	val disabledExtensions = mutableSetOf<String>()
+
+	fun loadDisabledExtensions() {
+		with(disabledExtensionsFile) {
+			if (!exists()) {
+				createNewFile()
+
+				return@with
+			}
+
+			disabledExtensions.addAll(disabledExtensionsFile.readLines())
+		}
+	}
+
+	fun dumpDisabledExtensions() {
+		disabledExtensionsFile.writeText(
+			disabledExtensions.joinToString("\n")
+		)
+	}
 }
