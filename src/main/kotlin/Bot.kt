@@ -11,8 +11,9 @@ import kotlin.system.exitProcess
 
 suspend fun main() {
 	val configPath = Config.path.toPath()
+
 	if (!FileSystem.SYSTEM.exists(configPath)) {
-		println("Config not found, creating...")
+		kordLogger.warn("Config not found, creating...")
 
 		val renderOptions = ConfigRenderOptions.defaults()
 			.setJson(false)
@@ -25,7 +26,7 @@ suspend fun main() {
 			)
 		}
 
-		println("Configure the config!")
+		kordLogger.warn("Configure the config!")
 		exitProcess(1)
 	}
 
@@ -43,7 +44,7 @@ suspend fun main() {
 	}
 
 	bot.on<ReadyEvent> {
-		println("Bot ready! Logged in as ${self.username}")
+		kordLogger.info("Bot ready")
 	}
 
 	bot.start()
