@@ -4,5 +4,6 @@
 /build/
 /build/classes/kotlin/main/
 
-# Files with sensetive data
+# Local files created by bot
 config
+disabled.txt
