@@ -23,18 +23,20 @@ import kotlinx.coroutines.flow.toList
 class PrivateRoomsExtension : Extension() {
 	override val name = "private-rooms"
 
-	override suspend fun setup() {
-		val privatesConfig = Config.current.privateRooms
+	private fun privatesConfig() = Config.current.privateRooms
 
+	override suspend fun setup() {
 		val rooms = indexRooms(
 			kord.getGuildOrNull(Snowflake(Config.current.guildId))!!,
-			Snowflake(privatesConfig.categoryId),
-			Snowflake(privatesConfig.createChannelId)
+			Snowflake(privatesConfig().categoryId),
+			Snowflake(privatesConfig().createChannelId)
 		).toMutableList()
 
 		event<VoiceStateUpdateEvent> {
+			check { passIf(privatesConfig().enabled) }
+
 			action {
-				if (event.state.channelId == Snowflake(privatesConfig.createChannelId)) {
+				if (event.state.channelId == Snowflake(privatesConfig().createChannelId)) {
 					val member = event.state.getMember()
 					val name = "🔐 ${member.displayName}"
 
